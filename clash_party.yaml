@@ -1,0 +1,251 @@
+# https://clashparty.org/docs/guide/override/yaml
+proxy-groups:
+  - name: 👽 AI
+    type: select
+    proxies: &proxy_options
+      - DIRECT
+      - 所有-自动
+      - 港台日新韩-自动
+      - 日韩新台-自动
+      - 日本-自动
+      - 韩国-自动
+      - 新加坡-自动
+      - 台湾-自动
+      - 美国-自动
+      - 其他-自动
+      - REJECT
+  - name: 📀 流媒体
+    type: select
+    proxies: *proxy_options
+  - name: 🌍 国外
+    type: select
+    proxies: *proxy_options
+  - name: ➡️ 国内
+    type: select
+    proxies: *proxy_options
+  - name: 🕹️ GamePlatform
+    type: select
+    proxies: *proxy_options
+  - name: 🎮 GameAll
+    type: select
+    proxies: *proxy_options
+  - name: 🕹️ GameDownload
+    type: select
+    proxies: *proxy_options
+  - name: 所有-自动
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 60
+    tolerance: 50
+    include-all: true
+  - name: 港台日新韩-自动
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 60
+    tolerance: 50
+    include-all: true
+    filter: (?i)(广港|广台|广日|广新|广韩|香港|HK|Hong Kong|🇭🇰|HongKong|台湾|TW|Tai Wan|🇨🇳|TaiWan|Taiwan|日本|JP|川日|东京|大阪|泉日|埼玉|沪日|深日|🇯🇵|Japan|新加坡|SG|坡|狮城|🇸🇬|Singapore|韩国|KR|首尔|春川|🇰🇷|Korea)
+  - name: 日韩新台-自动
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 60
+    tolerance: 50
+    include-all: true
+    filter: (?i)(广台|广日|广新|广韩|台湾|TW|Tai Wan|🇨🇳|TaiWan|Taiwan|日本|JP|川日|东京|大阪|泉日|埼玉|沪日|深日|🇯🇵|Japan|新加坡|SG|坡|狮城|🇸🇬|Singapore|韩国|KR|首尔|春川|🇰🇷|Korea)
+  - name: 日本-自动
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 60
+    tolerance: 50
+    include-all: true
+    filter: (?i)(广日|日本|JP|川日|东京|大阪|泉日|埼玉|沪日|深日|🇯🇵|Japan)
+  - name: 韩国-自动
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 60
+    tolerance: 50
+    include-all: true
+    filter: (?i)(广韩|韩国|KR|首尔|春川|🇰🇷|Korea)
+  - name: 新加坡-自动
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 60
+    tolerance: 50
+    include-all: true
+    filter: (?i)(广新|新加坡|SG|坡|狮城|🇸🇬|Singapore)
+  - name: 台湾-自动
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 60
+    tolerance: 50
+    include-all: true
+    filter: (?i)(广台|台湾|TW|Tai Wan|🇨🇳|TaiWan|Taiwan)
+  - name: 美国-自动
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 60
+    tolerance: 50
+    include-all: true
+    filter: (?i)(美国|广美|美|US|纽约|波特兰|达拉斯|俄勒|凤凰城|费利蒙|硅谷|拉斯|洛杉|圣何塞|圣克拉|西雅|芝加|🇺🇸|United States)
+  - name: 其他-自动
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 60
+    tolerance: 50
+    include-all: true
+    filter: (?i)(格|波|柬|尼|也|克|比|尔|立|冰|秘|耳|利|埃|希|孟|芬|愛|澳|英|德|南|意|法|拿|墨|印|越|俄|瑞|智|荷|比|巴|沙|班|泰|德|烏|以|Australia|Konghwaguk)
+rule-providers:
+  AI:
+    type: http
+    behavior: classical
+    format: text
+    interval: 86400
+    url: https://raw.githubusercontent.com/w3eee/openclash-config/refs/heads/main/AI.list
+    path: ./ruleset/AI.list
+  AI2:
+    type: http
+    behavior: classical
+    format: text
+    interval: 86400
+    url: https://raw.githubusercontent.com/w3eee/openclash-config/refs/heads/main/AI2.list
+    path: ./ruleset/AI2.list
+  ChatGPT:
+    type: http
+    behavior: classical
+    format: text
+    interval: 86400
+    url: https://raw.githubusercontent.com/w3eee/openclash-config/refs/heads/main/ChatGPT.list
+    path: ./ruleset/ChatGPT.list
+  Gemini:
+    type: http
+    behavior: classical
+    format: text
+    interval: 86400
+    url: https://raw.githubusercontent.com/w3eee/openclash-config/refs/heads/main/Gemini.list
+    path: ./ruleset/Gemini.list
+  GamePlatform:
+    type: http
+    behavior: classical
+    format: text
+    interval: 86400
+    url: https://raw.githubusercontent.com/w3eee/openclash-config/refs/heads/main/GamePlatform.list
+    path: ./ruleset/GamePlatform.list
+  GameAll:
+    type: http
+    behavior: classical
+    format: text
+    interval: 86400
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Game/Game.list
+    path: ./ruleset/GameAll.list
+  GameDownload_Custom:
+    type: http
+    behavior: classical
+    format: text
+    interval: 86400
+    url: https://raw.githubusercontent.com/w3eee/openclash-config/refs/heads/main/GameDownload.list
+    path: ./ruleset/GameDownload_Custom.list
+  GameDownloadCN:
+    type: http
+    behavior: classical
+    format: text
+    interval: 86400
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Game/GameDownloadCN/GameDownloadCN.list
+    path: ./ruleset/GameDownloadCN.list
+  GameDownload:
+    type: http
+    behavior: classical
+    format: text
+    interval: 86400
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Game/GameDownload/GameDownload.list
+    path: ./ruleset/GameDownload.list
+  TikTok:
+    type: http
+    behavior: classical
+    format: text
+    interval: 86400
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/TikTok/TikTok.list
+    path: ./ruleset/TikTok.list
+  YouTube_Liandu:
+    type: http
+    behavior: classical
+    format: text
+    interval: 86400
+    url: https://raw.githubusercontent.com/liandu2024/clash/refs/heads/main/YouTube.list
+    path: ./ruleset/YouTube_Liandu.list
+  YouTube:
+    type: http
+    behavior: classical
+    format: text
+    interval: 86400
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/YouTube/YouTube.list
+    path: ./ruleset/YouTube.list
+  HBO:
+    type: http
+    behavior: classical
+    format: text
+    interval: 86400
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/HBO/HBO.list
+    path: ./ruleset/HBO.list
+  Disney:
+    type: http
+    behavior: classical
+    format: text
+    interval: 86400
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Disney/Disney.list
+    path: ./ruleset/Disney.list
+  Netflix:
+    type: http
+    behavior: classical
+    format: text
+    interval: 86400
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Netflix/Netflix.list
+    path: ./ruleset/Netflix.list
+  Spotify:
+    type: http
+    behavior: classical
+    format: text
+    interval: 86400
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Spotify/Spotify.list
+    path: ./ruleset/Spotify.list
+  Proxy:
+    type: http
+    behavior: classical
+    format: text
+    interval: 86400
+    url: https://raw.githubusercontent.com/liandu2024/clash/refs/heads/main/Proxy.list
+    path: ./ruleset/Proxy.list
+  Custom:
+    type: http
+    behavior: classical
+    format: text
+    interval: 86400
+    url: https://raw.githubusercontent.com/w3eee/openclash-config/refs/heads/main/custom.list
+    path: ./ruleset/Custom.list
+  Global:
+    type: http
+    behavior: classical
+    format: text
+    interval: 86400
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Global/Global.list
+    path: ./ruleset/Global.list
+rules:
+  - RULE-SET,AI,👽 AI
+  - RULE-SET,AI2,👽 AI
+  - RULE-SET,ChatGPT,👽 AI
+  - RULE-SET,Gemini,👽 AI
+  - RULE-SET,GamePlatform,🕹️ GamePlatform
+  - RULE-SET,GameAll,🎮 GameAll
+  - RULE-SET,GameDownload_Custom,🕹️ GameDownload
+  - RULE-SET,GameDownloadCN,🕹️ GameDownload
+  - RULE-SET,GameDownload,🕹️ GameDownload
+  - RULE-SET,TikTok,📀 流媒体
+  - RULE-SET,YouTube_Liandu,📀 流媒体
+  - RULE-SET,YouTube,📀 流媒体
+  - RULE-SET,HBO,📀 流媒体
+  - RULE-SET,Disney,📀 流媒体
+  - RULE-SET,Netflix,📀 流媒体
+  - RULE-SET,Spotify,📀 流媒体
+  - RULE-SET,Proxy,🌍 国外
+  - RULE-SET,Custom,🌍 国外
+  - RULE-SET,Global,🌍 国外
+  - MATCH,➡️ 国内
